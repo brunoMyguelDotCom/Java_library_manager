@@ -1,0 +1,12 @@
+# Arquivos compilados
+/bin/
+bin/
+
+# Arquivos temporários do macOS
+.DS_Store
+
+# Arquivos de backup e temporários comuns
+*.class
+*.log
+*.tmp
+*~
