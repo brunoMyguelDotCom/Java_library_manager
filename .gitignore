@@ -1,7 +1,8 @@
 # Arquivos compilados
 /bin/
 bin/
-.vscode
+.vscode/
+
 # Arquivos temporários do macOS
 .DS_Store
 
