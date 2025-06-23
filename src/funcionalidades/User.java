@@ -6,12 +6,28 @@ public class User {
     private String nome;
     private String cpf;
     public ArrayList<Livro> listaLivros;
+    private Biblioteca biblioteca;
 
-    public User(String nome, String cpf) {
+    public User(String nome, String cpf, Biblioteca biblioteca) {
         this.nome = nome;
         this.cpf = cpf;
         this.listaLivros = new ArrayList<>();
+        // Adiciona usuario a lista da biblioteca
+        this.biblioteca = biblioteca;
+        this.biblioteca.addUserBiblioteca(this);
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public ArrayList<Livro> getListaLivros() {
+        return listaLivros;
+    }   
 
     public void emprestaLivro(Livro emprestaLivro) {
         // Verifica se a lista ja contem 3 livros emprestados
@@ -53,23 +69,38 @@ public class User {
 
     public void exibeEmprestados() {
         System.out.println("""
-
-                ___________________________________
-
-                * NUMERO DE LIVRO(S) EMPRESTADO(S): %d
+                ╔════════════════════════════════════════════════════════════╗
+                ║                    LIVROS EMPRESTADOS                     ║
+                ╠════════════════════════════════════════════════════════════╣
+                ║  NUMERO DE LIVRO(S) EMPRESTADO(S): %-24d        ║
+                ╚════════════════════════════════════════════════════════════╝
                 """.formatted(listaLivros.size()));
 
         // ForEach para exibir livro por livro dentro da lista
         for (Livro livroExibir : listaLivros) {
-            System.out.print("***********************\n\n");
-
-            System.out.println("LIVRO Nº: %d:".formatted(listaLivros.indexOf(livroExibir) + 1));
-
-            System.out.print("\n\n");
+            System.out.println("╔════════════════════════════════════════════════╗");
+            System.out.printf("║ LIVRO Nº: %-38s ║%n", listaLivros.indexOf(livroExibir) + 1);
+            System.out.println("╚════════════════════════════════════════════════╝\n");
 
             livroExibir.exibeInfosToUser();
 
-            System.out.print("***********************\n\n");
+            System.out.println("╔════════════════════════════════════════════════╗");
+            System.out.println("║               FIM DO LIVRO ACIMA               ║");
+            System.out.println("╚════════════════════════════════════════════════╝\n");
         }
     }
+
+    public void interfaceInicial() {
+        System.out.println("╔════════════════════════════════════════════════╗");
+        System.out.println("║ Livros emprestados:           [  %d  ]         ║".formatted(listaLivros.size()));
+        System.out.println("║ Empréstimos restantes:        [  %d  ]         ║".formatted(3 - listaLivros.size()));
+        System.out.println("╠════════════════════════════════════════════════╣");
+        System.out.println("║   Opções:                                      ║");
+        System.out.println("║   [1] Listar livros disponíveis                ║");
+        System.out.println("║   [2] Ver livros emprestados                   ║");
+        System.out.println("║   [3] Sair                                     ║");
+        System.out.println("╚════════════════════════════════════════════════╝");
+        System.out.print("Escolha uma opção: ");
+    }
+
 }
