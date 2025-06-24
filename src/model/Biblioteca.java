@@ -1,4 +1,4 @@
-package funcionalidades;
+package model;
 
 import java.util.ArrayList;
 
