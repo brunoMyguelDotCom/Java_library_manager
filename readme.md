@@ -1,34 +1,119 @@
-# Sistema de Biblioteca Pessoal
+Sistema de Gerenciamento de Biblioteca - Java CLI
+Configuração e Execução
+Requisitos
 
-Este projeto é um sistema simples de gerenciamento de uma biblioteca pessoal, desenvolvido em Java, com foco na prática dos principais conceitos de Programação Orientada a Objetos (POO).
+    Java JDK 11 ou superior instalado
 
-## Objetivo
+    Terminal/linha de comando
 
-Permitir o cadastro de livros e usuários, além de controlar empréstimos e devoluções, simulando o funcionamento básico de uma biblioteca.
+Inicialização
+bash
 
-## Tecnologias utilizadas
+# Compilar
+javac -d . *.java
 
-- Java 24
-- Paradigma de Programação Orientada a Objetos
-- VS Code como IDE principal
+# Executar
+java Main
 
-## Estrutura do projeto
+Acesso Inicial
 
-- `Livro`: representa um livro com título, autor, ISBN e status de empréstimo.
-- `Usuario`: representa um usuário com nome, CPF e lista de livros emprestados.
-- `Biblioteca`: gerencia o acervo de livros, os usuários cadastrados e as operações do sistema.
+    Usuário padrão para testes:
 
-## Funcionalidades
+        Nome: "user"
 
-- Cadastrar livros no acervo
-- Cadastrar usuários
-- Emprestar livros (limite de 3 livros por usuário)
-- Devolver livros
-- Listar livros disponíveis
-- Consultar livros emprestados por usuário
+        CPF: "123"
 
-## Regras do sistema
+Arquitetura Principal
+Entidades do Sistema
 
-- Um livro só pode ser emprestado se estiver disponível.
-- Cada usuário pode ter no máximo 3 livros emprestados ao mesmo tempo.
-- Ao devolver um livro, ele volta para a lista de disponíveis.
+    Biblioteca (Biblioteca.java)
+
+        Mantém registros de todos os livros e usuários
+
+        Métodos para gestão de coleções
+
+    Livro (Livro.java)
+
+        Atributos: título, autor, código único, status
+
+        Controle de disponibilidade (DISPONIVEL/INDISPONIVEL)
+
+    Usuário (User.java)
+
+        Capacidade máxima: 3 empréstimos simultâneos
+
+        Métodos para transações de livros
+
+    Controle Principal (Main.java)
+
+        Fluxo de navegação
+
+        Interfaces de usuário
+
+Operações Suportadas
+Para Usuários
+
+    Autenticação no sistema
+
+    Consulta de livros disponíveis
+
+    Empréstimo de itens (até 3 simultâneos)
+
+    Devolução de livros
+
+    Visualização de itens emprestados
+
+Para Administradores
+
+    Visualização completa do acervo
+
+    Monitoramento de empréstimos ativos
+
+Dados Iniciais
+Livros Pré-cadastrados
+
+    Entendendo Algoritmos (Aditya Bhargava)
+
+    Arquitetura Limpa (Robert C. Martin)
+
+    O Programador Pragmático (Andrew Hunt e David Thomas)
+
+    Python Fluente (Luciano Ramalho)
+
+    Refatoração (Martin Fowler)
+
+Roadmap de Desenvolvimento
+Próximas Versões
+
+    Implementação de cadastro de novos usuários
+
+    Sistema de persistência em arquivo
+
+    Módulo administrativo completo
+
+    Funcionalidade de reservas
+
+    Geração de relatórios
+
+Documentação Técnica
+Validações Implementadas
+
+    Verificação de limites de empréstimo
+
+    Controle de disponibilidade de itens
+
+    Validação de existência de usuário
+
+    Consistência de transações
+
+Métodos Críticos
+
+    emprestaLivro(): Gerencia todo o ciclo de empréstimo
+
+    devolveLivro(): Processa devoluções e atualizações
+
+    interfaceLogin(): Controla o acesso ao sistema
+
+Licenciamento
+
+MIT License - Disponível para uso acadêmico e comercial, sem garantias implícitas.
