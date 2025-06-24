@@ -296,7 +296,7 @@ public class Main {
                 biblioteca);
 
         // Criando o usuário fictício
-        User usuario1 = new User("bruno", "123", biblioteca);
+        User usuario1 = new User("user", "123", biblioteca);
 
         // inicio
         interfaceBemVindo(biblioteca);
